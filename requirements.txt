@@ -5,6 +5,6 @@ ultralytics
 wheel
 onnx
 onnx-simplifier
+pycuda
 nvidia-pyindex
 tensorrt
-pycuda
