@@ -1,0 +1,10 @@
+numpy
+matplotlib
+pandas
+ultralytics
+wheel
+onnx
+onnx-simplifier
+nvidia-pyindex
+tensorrt
+pycuda
