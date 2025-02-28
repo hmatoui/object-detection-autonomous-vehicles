@@ -53,8 +53,8 @@ def train_yolo():
     model.train(
         data="data/coco.yaml",   # Path to dataset configuration file
         epochs=50,              # Number of epochs
-        batch=16,               # Batch size
-        imgsz=640,              # Image size
+        batch=8,               # Batch size
+        imgsz=320,              # Image size
         project="results",      # Directory to save results
         name="train_yolov8",    # Experiment name
         pretrained=True         # Use pre-trained weights
