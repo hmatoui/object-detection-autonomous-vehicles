@@ -1,5 +1,6 @@
 from ultralytics import YOLO
 import tensorrt as trt
+from ultralytics.data.utils import check_det_dataset
 import pycuda.driver as cuda
 import pycuda.autoinit
 
@@ -47,11 +48,11 @@ def onnx_to_tensorrt(onnx_file="yolov8s.onnx", engine_file="yolov8s.engine"):
 
 def train_yolo():
     # Load the YOLOv8 model (pre-trained on COCO)
-    model = YOLO("models/yolo/yolov8s.pt")  # Use "yolov8n.pt" for a smaller model
+    model = YOLO("models/yolo/yolo11n.pt")  # Use "yolov8n.pt" for a smaller model
 
     # Train the model
     model.train(
-        data="data/coco.yaml",   # Path to dataset configuration file
+        data="configs/coco.yaml",   # Path to dataset configuration file
         epochs=50,              # Number of epochs
         batch=8,               # Batch size
         imgsz=320,              # Image size
