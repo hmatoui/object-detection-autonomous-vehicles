@@ -1,8 +1,6 @@
 path: ../datasets/coco  # Dataset root directory
-train: train/images  # Training images directory
-val: val/images      # Validation images directory
-annotations:
-  val: annotations/instances_val.json  # COCO annotations directory
+train: train2017.txt  # Training images directory
+val: val2017.txt      # Validation images directory
 
 nc: 80  # Number of classes
 names:
