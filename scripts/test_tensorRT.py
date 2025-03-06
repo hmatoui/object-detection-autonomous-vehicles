@@ -2,7 +2,6 @@ import cv2
 import numpy as np
 import tensorrt as trt
 import pycuda.driver as cuda
-import pycuda.autoinit
 
 class YOLOv8TensorRT:
     def __init__(self, engine_file):

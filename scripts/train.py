@@ -2,9 +2,8 @@ from ultralytics import YOLO
 import tensorrt as trt
 from ultralytics.data.utils import check_det_dataset
 import pycuda.driver as cuda
-import pycuda.autoinit
 
-def export_yolov8_to_onnx(model_path="yolov8s.pt", onnx_path="yolov8s.onnx"):
+def export_yolov8_to_onnx(model_path="models/yolo/yolo11n.pt", onnx_path="yolo11n.onnx"):
     # Load YOLOv8 model
     model = YOLO(model_path)
 
@@ -14,7 +13,7 @@ def export_yolov8_to_onnx(model_path="yolov8s.pt", onnx_path="yolov8s.onnx"):
     print(f"YOLOv8 model exported to {onnx_path}")
 
 
-def onnx_to_tensorrt(onnx_file="yolov8s.onnx", engine_file="yolov8s.engine"):
+def onnx_to_tensorrt(onnx_file="models/yolo/yolo11n.onnx", engine_file="models/yolo/yolo11n.engine"):
     TRT_LOGGER = trt.Logger(trt.Logger.WARNING)
 
     # Initialize TensorRT builder and network
@@ -31,7 +30,6 @@ def onnx_to_tensorrt(onnx_file="yolov8s.onnx", engine_file="yolov8s.engine"):
             return None
 
     # Set builder configuration
-    config.max_workspace_size = 1 << 30  # 1GB of workspace
     builder.max_batch_size = 1
     config.set_flag(trt.BuilderFlag.FP16)  # Enable FP16 precision if supported
 
@@ -54,14 +52,14 @@ def train_yolo():
     model.train(
         data="configs/coco.yaml",   # Path to dataset configuration file
         epochs=50,              # Number of epochs
-        batch=8,               # Batch size
+        batch=8,                # Batch size
         imgsz=320,              # Image size
         project="results",      # Directory to save results
-        name="train_yolov8",    # Experiment name
+        name="train_yolo",      # Experiment name
         pretrained=True         # Use pre-trained weights
     )
 
 if __name__ == "__main__":
-    train_yolo()
+    # train_yolo()
     export_yolov8_to_onnx()
     onnx_to_tensorrt()
