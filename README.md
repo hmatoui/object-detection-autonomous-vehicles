@@ -2,6 +2,8 @@
 
 This project develops an object detection system optimized for autonomous vehicles, using the YOLO architecture for real-time detection. It is trained and tested on the COCO Dataset.
 
+![Demo Video](assets/test_video_result.gif)
+
 ## Table of Contents
 
 - [Overview](#overview)
